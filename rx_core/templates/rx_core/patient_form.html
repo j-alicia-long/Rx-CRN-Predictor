@@ -1,0 +1,15 @@
+{% extends 'rx_core/account_base.html' %}
+{% load static %}
+
+{%block page_title %}
+  <h1>New Patient Form</h1>
+{% endblock %}
+
+{%block page %}
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" value="Save" class="btn btn-primary">
+      Submit
+    </button>
+</form>
+{% endblock %}

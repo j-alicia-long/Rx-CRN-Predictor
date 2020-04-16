@@ -1,0 +1,18 @@
+{% extends 'rx_core/account_base.html' %}
+{% load static %}
+
+{%block page_title %}
+  <h1>Patient Portal</h1>
+{% endblock %}
+
+{%block page %}
+<div class="col-lg-6 offset-lg-3">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Intake form</h5>
+      <p class="card-text">Please complete the intake form while you wait for your appointment.</p>
+      <a href="{% url 'rx_core:patient_intake' %}" class="btn btn-primary">Begin form</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

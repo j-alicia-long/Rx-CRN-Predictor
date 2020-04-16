@@ -1,0 +1,53 @@
+{% extends 'rx_core/account_base.html' %}
+{% load static %}
+
+{%block page_title %}
+  <h1>Waiting Room</h1>
+{% endblock %}
+
+{%block navtabs %}
+<nav class="w-100">
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-current-tab"
+       href="{% url 'rx_core:waiting_room' %}" role="tab">
+       Waiting Patients</a>
+    <a class="nav-item nav-link" id="nav-completed-tab"
+       href="{% url 'rx_core:waiting_room' %}" role="tab">
+       Checked Patients</a>
+  </div>
+</nav>
+{% endblock %}
+
+{%block page %}
+    {% if patient_list %}
+      {% for patient in patient_list %}
+      <div class="col-lg-4 col-sm-6">
+        <div class="card border-info mb-3">
+          <div class="card-header">Arrived {{ now }}</div>
+          <div class="card-body text-info">
+            <a href="{% url 'rx_core:patient_detail' patient.id %}">
+              <h5 class="card-title">{{ patient }}</h5>
+            </a>
+            <p class="card-text">Conditions</p>
+          </div>
+          <div class="card-footer text-muted">
+            <div class="progress">
+              <div class="progress-bar bg-danger" role="progressbar" style="width: {{ patient.get_crn_score }}%"
+                   aria-valuenow="{{ patient.crn_score }}" aria-valuemin="0" aria-valuemax="100">
+                {{ patient.crn_score }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    {% else %}
+    <div class="card">
+      <div class="card-body">
+        <p>No patients yet!
+          <a href="{% url 'pages:goal_create' %}">Create a new one?</a>
+        </p>
+      </div>
+    </div>
+    {% endif %}
+{% endblock %}

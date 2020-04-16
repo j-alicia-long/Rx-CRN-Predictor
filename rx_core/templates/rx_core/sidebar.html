@@ -1,0 +1,22 @@
+
+<!-- Sidebar -->
+<div class="bg-light border-secondary border-right" id="sidebar-wrapper">
+  <div class="sidebar-heading">
+    My RX Predictor
+  </div>
+  <div class="list-group list-group-flush">
+    <a href="{% url 'rx_core:dashboard' %}"
+       class="list-group-item list-group-item-action bg-light">
+       <i class="fa fa-th-large fa-fw"></i>&nbsp; Dashboard
+    </a>
+    <a href="{% url 'rx_core:waiting_room' %}"
+       class="list-group-item list-group-item-action bg-light">
+      <i class="fa fa-pencil-square-o fa-fw"></i>&nbsp; Waiting Room
+    </a>
+    <a href="{% url 'rx_core:patient_portal' %}"
+       class="list-group-item list-group-item-action bg-light">
+      <i class="fa fa-check-square-o fa-fw"></i>&nbsp; Patient Portal
+    </a>
+  </div>
+</div>
+<!-- /#sidebar-wrapper -->

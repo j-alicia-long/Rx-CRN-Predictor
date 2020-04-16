@@ -1,0 +1,27 @@
+{% extends 'rx_core/account_base.html' %}
+{% load static %}
+
+{%block page_title %}
+  <h1>Patient Log</h1>
+{% endblock %}
+
+{%block navtabs %}
+<nav class="w-100">
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-current-tab"
+       href="{% url 'rx_core:waiting_room' %}" role="tab">
+       Waiting Patients</a>
+    <a class="nav-item nav-link" id="nav-completed-tab"
+       href="{% url 'rx_core:waiting_room' %}" role="tab">
+       Checked Patients</a>
+  </div>
+</nav>
+{% endblock %}
+
+{%block page %}
+<div class="card w-100">
+  <div class="card-body">
+    <p>No patients have checked out.</p>
+  </div>
+</div>
+{% endblock %}

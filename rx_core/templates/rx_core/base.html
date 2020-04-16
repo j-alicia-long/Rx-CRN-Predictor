@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>RXFIT</title>
+    <meta content="Get your lost-cost prescriptions here" name="description">
+    <meta content="prescription, pharmary, prices" name="keywords">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'rx_core/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+    <link href="{% static 'rx_core/vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'rx_core/css/simple-sidebar.css'%}" rel="stylesheet">
+
+    {%block extrahead %}
+    {%endblock %}
+  </head>
+
+  <body>
+
+    <div class="d-flex" id="wrapper">
+
+      {% include "rx_core/sidebar.html" %}
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      {% include "rx_core/navbar.html" %}
+
+      {%block content %}
+      <div class="container-fluid">
+        <h1 class="mt-4">Default content</h1>
+      </div>
+      {% endblock %}
+
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'rx_core/vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'rx_core/vendor/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'rx_core/vendor/jquery.easing/jquery.easing.min.js'%}"></script>
+    <script src="{% static 'rx_core/vendor/php-email-form/validate.js'%}"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
+    </script>
+
+    {%block extrascripts %}
+    {%endblock %}
+  </body>
+</html>
