@@ -2,15 +2,43 @@ version: '3'
 
 services:
   web:
+    container_name: rx_django
     build: ./web
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./web:/app
     ports:
       - '8000:8000'
+    # env_file:
+    #   - .env
+    environment:
+      - DEBUG=1
+      - DB_ENGINE=django.db.backends.postgresql_psycopg2
+      - DB_DATABASE=rx_aecera_dev
+      - DB_USER=aecera
+      - DB_PASSWORD=aecera
+      - DB_HOST=db
+      - DB_PORT=5432
+    depends_on:
+      - db
+
+  db:
+    container_name: rx_db
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=aecera
+      - POSTGRES_PASSWORD=aecera
+      - POSTGRES_DB=aecera_dev
+
   api:
+    container_name: rx_api
     build: ./api
     volumes:
       - ./api:/app
     ports:
       - '5000:5000'
+
+volumes:
+  postgres_data:
