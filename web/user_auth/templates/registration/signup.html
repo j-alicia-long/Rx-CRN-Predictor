@@ -1,21 +1,30 @@
-{% extends "rx_core/account_base.html" %}
+{% extends "rx_core/app_base.html" %}
+
+{%block page_title %}
+  <h1>Sign Up</h1>
+{% endblock %}
 
 {% block page %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
-          <small style="color: grey">{{ field.help_text }}</small>
-        {% endif %}
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-      </p>
-    {% endfor %}
-    <button type="submit">Sign up</button>
-  </form>
+  <div class="col">
+    <form method="post">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="form-group">
+          {{ field.label_tag }}<br>
+          {{ field }}
+          {% if field.help_text %}
+            <small style="color: grey">{{ field.help_text }}</small>
+          {% endif %}
+          {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endfor %}
+      <button type="submit" class="btn btn-primary">Sign up</button>
+    </form>
+    <hr/>
+    <a href="{% url 'login' %}" class="btn btn-light">
+      Sign in to your account
+    </a>
+  </div>
 {% endblock %}

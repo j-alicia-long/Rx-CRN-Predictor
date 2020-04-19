@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
 
 
 def signup(request):
@@ -12,7 +13,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('dashboard/')
+            return reverse_lazy('rx_core:dashboard')
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})

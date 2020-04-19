@@ -6,5 +6,37 @@
 {% endblock %}
 
 {%block page %}
-Hello
+<div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
+  <div class="row text-center">
+
+    <div class="col">
+      <div class="card text-white bg-danger h-100">
+        <div class="card-header">
+          <h5>I'm a Patient</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            Just arrived? Complete the patient intake form
+          </p>
+          <a href="{% url 'rx_core:patient_portal' %}" class="btn btn-light btn-block">Go there</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="card text-white bg-info h-100">
+        <div class="card-header">
+          <h5>I'm a Doctor</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            Examine the patients in your waiting room
+          </p>
+          <a href="{% url 'rx_core:waiting_room' %}" class="btn btn-light btn-block">Go there</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 {% endblock %}

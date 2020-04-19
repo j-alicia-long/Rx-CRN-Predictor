@@ -14,11 +14,6 @@ def index(request):
 def patient_portal(request):
     return render(request, 'rx_core/patient_portal.html')
 
-# class PatientIntakeView(FormView):
-#     template_name = 'rx_core/patient_portal.html'
-#     form_class = PatientIntakeForm
-#     success_url = 'patients/thanks/'
-
 class PatientIntake(CreateView):
     template_name = 'rx_core/patient_form.html'
     form_class = PatientIntakeForm
@@ -44,12 +39,19 @@ class WaitingRoomView(ListView):
     context_object_name = 'patient_list'
 
     def get_queryset(self):
-        return Patient.objects.all()
+        return Patient.objects.filter(checked=False)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['now'] = timezone.now()
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['now'] = timezone.now()
+    #     return context
+
+class CompletedRoomView(ListView):
+    template_name = 'rx_core/completed_room.html'
+    context_object_name = 'patient_list'
+
+    def get_queryset(self):
+        return Patient.objects.filter(checked=True)
 
 class PatientDetailView(DetailView):
     model = Patient

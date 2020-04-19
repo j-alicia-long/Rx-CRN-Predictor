@@ -14,6 +14,7 @@ then
 fi
 
 # Running migrations on container start
+python manage.py makemigrations
 python manage.py migrate
 
 # Executing original command (likely starting Django)

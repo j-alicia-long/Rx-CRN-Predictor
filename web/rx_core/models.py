@@ -79,9 +79,14 @@ class Patient(models.Model):
 
     other_info = models.TextField(default="")
     arrival_time = models.DateTimeField(default=timezone.now)
+    checked = models.BooleanField(default=False)
 
     # Result returned after survey
     crn_score = models.IntegerField(default=50)
+
+    def check_patient(self):
+        self.checked = False
+        return self.checked
 
     def body_mass_index(self):
         return (self.weight)/(self.height**2)

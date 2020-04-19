@@ -4,7 +4,7 @@ from .models import Patient
 class PatientIntakeForm(forms.ModelForm):
     class Meta:
         model = Patient
-        exclude = ('crn_score',)
+        exclude = ('crn_score', 'checked',)
 
         widgets = {
             'first_name': forms.TextInput(attrs={'class': 'form-control'}),

@@ -12,4 +12,5 @@ urlpatterns = [
 	path('dashboard/', views.dashboard, name='dashboard'),
 	path('waiting-room/', views.WaitingRoomView.as_view(), name='waiting_room'),
 	path('waiting-room/patient/<int:pk>', views.PatientDetailView.as_view(), name='patient_detail'),
+	path('checked-patients/', views.CompletedRoomView.as_view(), name='checked_patients'),
 ]

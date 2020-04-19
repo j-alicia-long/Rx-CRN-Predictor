@@ -6,11 +6,19 @@
   <a href="{% url 'rx_core:waiting_room' %}" class="btn btn-secondary">Back to waiting room</a>
 {% endblock %}
 
+{%block info %}
+<h5>Patient Checked: {{ patient.check_patient }}</h5>
+<button type="button" class="btn btn-success btn-block">
+  Mark as Checked
+</button>
+{% endblock %}
+
 {%block page %}
-<div class="col-lg-6 offset-lg-3">
+<div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
   <h4>{{ patient }}</h4>
   <p>Arrived {{ patient.arrival_time }}</p>
   <br/>
+
   <div class="card">
     <div class="card-header">
       <h5>Financial Factors</h5>
@@ -44,6 +52,8 @@
       </div>
     </div>
   </div>
+  <br/>
+
   <div class="card">
     <div class="card-header">
       <h5>Demographic Factors</h5>
@@ -93,10 +103,145 @@
           <h6>Marital Status</h6>
         </div>
         <div class="col-sm-8">
-          <div class="progress">
-            <div class="progress-bar bg-warning w-100" role="progressbar"
-                 aria-valuemin="0" aria-valuemax="5">
+          <div class="progress justify-content-center">
               {{ patient.get_marital_status_display }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+
+  <div class="card">
+    <div class="card-header">
+      <h5>Socioeconomic Factors</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-4">
+          <h6>Education Level</h6>
+        </div>
+        <div class="col-sm-8">
+          <div class="progress">
+            <div class="progress-bar bg-success w-75" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="5">
+              {{ patient.get_education_level_display }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <h6>Employment Status</h6>
+        </div>
+        <div class="col-sm-8">
+          <div class="progress justify-content-center">
+              {{ patient.get_employment_status_display }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+
+  <div class="card">
+    <div class="card-header">
+      <h5>Health Factors</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-4">
+          <h6>General Health Status</h6>
+        </div>
+        <div class="col-sm-8">
+          <div class="progress">
+            <div class="progress-bar bg-info w-75" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="5">
+              {{ patient.get_general_health_status_display }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <h6>Comorbidity</h6>
+        </div>
+        <div class="col-sm-8">
+          <div class="progress">
+            <div class="progress-bar bg-info w-100" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="5">
+               {{ patient.get_comorbidity_display }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <h6>Disability</h6>
+        </div>
+        <div class="col-sm-8">
+          <div class="progress">
+            <div class="progress-bar bg-info w-100" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="5">
+               {{ patient.get_disability_display }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br/>
+
+  <div class="card">
+    <div class="card-header">
+      <h5>Lifestyle Factors</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-4">
+          <h6>Physical Activity</h6>
+        </div>
+        <div class="col-sm-8">
+          <div class="progress">
+            <div class="progress-bar bg-primary w-100" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="5">
+              {{ patient.get_physical_activity_display }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <h6>Alcohol Drinking</h6>
+        </div>
+        <div class="col-sm-8">
+          <div class="progress justify-content-center">
+              {{ patient.get_alcohol_drinking_display }}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <h6>Smoking Activity</h6>
+        </div>
+        <div class="col-sm-8">
+          <div class="progress">
+            <div class="progress-bar bg-primary w-100" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="5">
+              {{ patient.get_smoking_activity_display }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <h6>Body Mass Index (BMI)</h6>
+        </div>
+        <div class="col-sm-8">
+          <div class="progress">
+            <div class="progress-bar bg-primary w-100" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="5">
+              {{ patient.body_mass_index }}
             </div>
           </div>
         </div>
@@ -105,10 +250,5 @@
   </div>
 
 </div>
-{% endblock %}
 
-self.household_income + self.health_insurance + self.age +
-          self.sex + self.race + self.marital_status + self.education_level +
-          self.employment_status + self.physical_activity +
-          self.alcohol_drinking + self.smoking_activity +
-          self.general_health_status + self.comorbidity + self.disability
+{% endblock %}
