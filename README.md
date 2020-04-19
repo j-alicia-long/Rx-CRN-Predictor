@@ -1,4 +1,4 @@
-# Rx-fitme
+# Aecera - A Prescription CRN Predictor
 A CRN risk factor predictor to help physicians combat CRN (cost-related non-adherence) for low-income and other affected patients.
 
 ### Development Setup
