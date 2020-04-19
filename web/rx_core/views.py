@@ -6,13 +6,13 @@ from django.urls import reverse_lazy
 from django.utils import timezone
 
 from .models import Patient
-# from .forms import PatientIntakeForm
+from .forms import PatientIntakeForm
 
 def index(request):
-	return render(request, 'rx_core/index.html')
+    return render(request, 'rx_core/index.html')
 
 def patient_portal(request):
-	return render(request, 'rx_core/patient_portal.html')
+    return render(request, 'rx_core/patient_portal.html')
 
 # class PatientIntakeView(FormView):
 #     template_name = 'rx_core/patient_portal.html'
@@ -20,17 +20,23 @@ def patient_portal(request):
 #     success_url = 'patients/thanks/'
 
 class PatientIntake(CreateView):
-	model = Patient
-	fields = '__all__'
-	success_url = reverse_lazy('rx_core:patient_confirmation')
+    template_name = 'rx_core/patient_form.html'
+    form_class = PatientIntakeForm
+    success_url = reverse_lazy('rx_core:patient_confirmation')
+
+    def get_initial(self, *args, **kwargs):
+        initial = super(PatientIntake, self).get_initial(**kwargs)
+        # initial['name'] = 'My Goal'
+        return initial
+
 
 def patient_confirmation(request):
-	return render(request, 'rx_core/patient_confirmation.html')
+    return render(request, 'rx_core/patient_confirmation.html')
 
 
 # @login_required
 def dashboard(request):
-	return render(request, 'rx_core/dashboard.html')
+    return render(request, 'rx_core/dashboard.html')
 
 # @login_required
 class WaitingRoomView(ListView):

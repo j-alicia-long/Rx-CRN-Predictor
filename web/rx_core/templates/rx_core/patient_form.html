@@ -6,10 +6,42 @@
 {% endblock %}
 
 {%block page %}
-<form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" value="Save" class="btn btn-primary">
-      Submit
-    </button>
-</form>
+<div class="col-lg-8 offset-lg-2">
+  <form method="post">{% csrf_token %}
+      <h4>Patient Information</h4>
+      <br/>
+      <div class="non-field-errors">
+          {% for err in form.non_field_errors %}
+            <div class="alert alert-danger" role="alert">
+              {{ err }}
+            </div>
+          {% endfor %}
+        </div>
+
+        {% for field in form %}
+          <div class="form-group">
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-4">
+                    {{ field.label_tag }}
+                  </div>
+                  <div class="col-sm-8">
+                    {{ field }}
+                  </div>
+                </div>
+              </div>
+              {% for err in field.errors %}
+                <div class="alert alert-danger" role="alert">
+                  {{ err }}
+                </div>
+              {% endfor %}
+
+          </div>
+        {% endfor %}
+      <hr/>
+      <button type="submit" value="Save" class="btn btn-primary">
+        Submit
+      </button>
+  </form>
+</div>
 {% endblock %}

@@ -28,11 +28,14 @@
             <a href="{% url 'rx_core:patient_detail' patient.id %}">
               <h5 class="card-title">{{ patient }}</h5>
             </a>
-            <p class="card-text">Conditions</p>
+            <p class="card-text">
+              Age {{ patient.get_age_display }} {{ patient.get_sex_display }}<br/>
+              BMI: {{ patient.body_mass_index }}
+            </p>
           </div>
           <div class="card-footer text-muted">
             <div class="progress">
-              <div class="progress-bar bg-danger" role="progressbar" style="width: {{ patient.get_crn_score }}%"
+              <div class="progress-bar bg-warning" role="progressbar" style="width: {{ patient.get_crn_score }}%"
                    aria-valuenow="{{ patient.crn_score }}" aria-valuemin="0" aria-valuemax="100">
                 {{ patient.crn_score }}
               </div>
@@ -42,11 +45,12 @@
       </div>
       {% endfor %}
     {% else %}
-    <div class="card">
-      <div class="card-body">
-        <p>No patients yet!
-          <a href="{% url 'pages:goal_create' %}">Create a new one?</a>
-        </p>
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <p>No patients yet!
+          </p>
+        </div>
       </div>
     </div>
     {% endif %}

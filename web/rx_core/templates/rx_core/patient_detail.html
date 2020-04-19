@@ -8,11 +8,107 @@
 
 {%block page %}
 <div class="col-lg-6 offset-lg-3">
+  <h4>{{ patient }}</h4>
+  <p>Arrived {{ patient.arrival_time }}</p>
+  <br/>
   <div class="card">
+    <div class="card-header">
+      <h5>Financial Factors</h5>
+    </div>
     <div class="card-body">
-      <h5 class="card-title">{{ patient }}</h5>
-      <p class="card-text">Patient information</p>
+      <div class="row">
+        <div class="col-sm-4">
+          <h6>Household Income</h6>
+        </div>
+        <div class="col-sm-8">
+          <div class="progress">
+            <div class="progress-bar bg-danger w-75" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="5">
+              {{ patient.get_household_income_display }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <h6>Health Insurance</h6>
+        </div>
+        <div class="col-sm-8">
+          <div class="progress">
+            <div class="progress-bar bg-danger w-100" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="5">
+              {{ patient.get_health_insurance_display }}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="card">
+    <div class="card-header">
+      <h5>Demographic Factors</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-4">
+          <h6>Age</h6>
+        </div>
+        <div class="col-sm-8">
+          <div class="progress">
+            <div class="progress-bar bg-warning w-25" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="5">
+              {{ patient.get_age_display }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <h6>Sex</h6>
+        </div>
+        <div class="col-sm-8">
+          <div class="progress">
+            <div class="progress-bar bg-warning w-100" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="5">
+              {{ patient.get_sex_display }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <h6>Race/Ethnicity</h6>
+        </div>
+        <div class="col-sm-8">
+          <div class="progress">
+            <div class="progress-bar bg-warning w-100" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="5">
+              {{ patient.get_race_display }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <h6>Marital Status</h6>
+        </div>
+        <div class="col-sm-8">
+          <div class="progress">
+            <div class="progress-bar bg-warning w-100" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="5">
+              {{ patient.get_marital_status_display }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 {% endblock %}
+
+self.household_income + self.health_insurance + self.age +
+          self.sex + self.race + self.marital_status + self.education_level +
+          self.employment_status + self.physical_activity +
+          self.alcohol_drinking + self.smoking_activity +
+          self.general_health_status + self.comorbidity + self.disability
