@@ -1,0 +1,58 @@
+{% extends 'rx_core/base.html' %}
+{% load static %}
+
+{%block extrahead %}
+<!-- Custom styles for this template -->
+<link href="{% static 'rx_core/css/simple-sidebar.css'%}" rel="stylesheet">
+{%endblock %}
+
+
+{%block content %}
+  <div class="d-flex" id="wrapper">
+
+    {% include "rx_core/sidebar.html" %}
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      {% include "rx_core/navbar.html" %}
+
+      <div class="container-fluid">
+        <div class="row py-4 px-2">
+          <div class="col-lg-10 col-sm-8">
+            {%block page_title %}
+              <h1>Default Page</h1>
+            {% endblock %}
+          </div>
+          <div class="col-lg-2 col-sm-4 ml-auto">
+            {%block info %}
+            {% endblock %}
+          </div>
+        </div>
+
+        {%block navtabs %}
+        <hr/>
+        {% endblock %}
+
+        <div class="row p-2 py-4">
+          {%block page %}
+          <p>Default Page Content</p>
+          {% endblock %}
+        </div>
+      </div>
+
+    </div>
+    <!-- /#page-content-wrapper -->
+  </div>
+{% endblock %}
+
+
+{%block extrascripts %}
+<!-- Menu Toggle Script -->
+<script>
+  $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+  });
+</script>
+{%endblock %}
